@@ -4,6 +4,17 @@
 
 ## 실패 원인과 수정
 
+### README만 표시되는 설정을 바로잡는 방법
+
+`Deploy from a branch → main → /(root)`는 Next.js 소스를 빌드하는 설정이 아닙니다. 루트에 배포용 `index.html`이 없으면 README가 Jekyll 페이지로 게시될 수 있습니다. `.next/`는 내부 빌드 파일이며 Pages 게시 대상은 `npm run build`가 생성하는 `out/`입니다.
+
+1. [이 저장소의 Pages 설정](https://github.com/WhiteBearCode02/WhiteBearCode02.github.io/settings/pages)을 엽니다.
+2. **Build and deployment → Source**에서 **GitHub Actions**를 선택합니다. `main`과 `/(root)` 선택란은 사라집니다. 기존 워크플로를 사용하므로 새로운 워크플로 템플릿을 만들 필요가 없습니다.
+3. [Actions](https://github.com/WhiteBearCode02/WhiteBearCode02.github.io/actions)에서 **Deploy portfolio to GitHub Pages → Run workflow → main → Run workflow**를 실행합니다. Source 변경만으로 새 Next.js 배포가 시작된다고 가정하지 마세요.
+4. 해당 실행의 **build와 deploy가 모두 성공**한 뒤 [공개 사이트](https://whitebearcode02.github.io/)를 확인합니다. 계속 README가 보이면 최신 배포가 해당 워크플로인지 확인하고 Ctrl+Shift+R로 새로고침합니다.
+
+이 설정은 GitHub 저장소 설정이므로 로컬 파일 수정만으로 변경되지 않습니다. 배포 전 게시 소스 검사를 먼저 실행하여 잘못된 설정일 때 의존성 설치나 빌드를 시작하지 않고 설정 링크와 수정 방법을 표시합니다.
+
 첫 실행(38045567342)은 배포 설정 파일만 존재하는 상태에서 npm 캐시가 lockfile을 찾지 못해 실패했습니다. 이제 실제 앱, package.json, package-lock.json 및 정적 데이터 모듈을 프로젝트 루트에 포함합니다. 다음 단계는 전체 프로젝트를 커밋하고 배포 워크플로의 성공을 확인하는 것입니다.
 
 성공으로 표시되었던 `pages build and deployment`는 Jekyll 작업이었습니다. Next.js 정적 빌드 결과를 배포하려면 **Settings → Pages → Build and deployment → Source → GitHub Actions**를 선택하세요. 기존 커밋의 실패 표시를 지우려고 재실행할 필요는 없습니다. 새 커밋의 실행 결과를 확인하세요.

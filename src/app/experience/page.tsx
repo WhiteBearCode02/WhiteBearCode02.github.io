@@ -7,7 +7,7 @@ import { pageMetadata } from "@/lib/site";
 
 export const metadata = pageMetadata(
   "Experience",
-  "AICS 학부 연구와 Java Spring & React 풀스택 개발 교육 활동을 소개합니다.",
+  "AICS 학부 연구, Java Spring & React 풀스택 개발 교육 및 사회복무연수센터 표창장 수상 이력을 소개합니다.",
   "/experience",
 );
 
@@ -16,9 +16,9 @@ export default function ExperiencePage() {
     <>
       <section className="container page-section">
         <PageHeading
-          eyebrow="EXPERIENCE / RESEARCH & LEARNING"
+          eyebrow="EXPERIENCE / RESEARCH, LEARNING & AWARDS"
           title="Experience"
-          description="연구와 교육을 통해 개발의 시야를 넓혀가고 있습니다."
+          description="연구·교육 활동과 성실한 참여로 받은 표창 이력을 소개합니다."
         />
         <Timeline detailed />
         <div className="research-callout">

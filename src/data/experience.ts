@@ -1,5 +1,15 @@
 export const experiences = [
   {
+    type: "AWARD",
+    title: "사회복무연수센터 표창장",
+    organization: "사회복무연수센터",
+    period: "표창장 수상",
+    status: "수상",
+    description:
+      "귀하는 성실하고 적극적인 자세로 위 교육에 임하여 타의 모범이 되었으므로 이 표창장을 드립니다.",
+    items: ["성실하고 적극적인 교육 참여 및 모범적인 교육 태도로 표창"],
+  },
+  {
     type: "RESEARCH",
     title: "AICS 학부 연구생",
     organization: "순천향대학교 · AICS",
