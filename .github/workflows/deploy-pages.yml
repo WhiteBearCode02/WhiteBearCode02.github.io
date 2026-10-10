@@ -21,19 +21,28 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-      - name: Set up Node
-        uses: actions/setup-node@v4
         with:
-          node-version: '24'
+          persist-credentials: false
+      - name: Verify committed Next.js project
+        run: node scripts/verify-project.mjs
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24"
           cache: npm
+          cache-dependency-path: package-lock.json
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Install locked dependencies
         run: npm ci
+      - name: Lint
+        run: npm run lint
       - name: Build static portfolio
         run: npm run build
         env:
-          NEXT_TELEMETRY_DISABLED: '1'
+          NEXT_TELEMETRY_DISABLED: "1"
+      - name: Check TypeScript
+        run: npm run typecheck
       - name: Verify required exported pages
         run: node scripts/verify-static-export.mjs
       - name: Upload Pages artifact

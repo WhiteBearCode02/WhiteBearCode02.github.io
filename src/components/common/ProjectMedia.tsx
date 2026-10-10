@@ -1,0 +1,52 @@
+import Image from "next/image";
+import { Activity, Braces, Network, ImageIcon } from "lucide-react";
+import type { ProjectImage, ProjectTheme } from "@/types/project";
+
+const icons = { mint: Activity, violet: Braces, blue: Network };
+
+export function ProjectMedia({
+  image,
+  theme,
+  name,
+  compact = false,
+}: {
+  image: ProjectImage;
+  theme: ProjectTheme;
+  name: string;
+  compact?: boolean;
+}) {
+  const Icon = icons[theme];
+  return (
+    <div
+      className={`project-media theme-${theme} ${compact ? "media-compact" : ""}`}
+    >
+      {image.src ? (
+        <Image
+          src={image.src}
+          alt={image.alt}
+          fill
+          sizes={
+            compact
+              ? "(max-width: 700px) 100vw, 40vw"
+              : "(max-width: 700px) 100vw, 50vw"
+          }
+          className="project-image"
+        />
+      ) : (
+        <>
+          <div className="media-grid" aria-hidden="true" />
+          <div className="media-symbol" aria-hidden="true">
+            <Icon strokeWidth={1.3} />
+          </div>
+          <div className="media-label">
+            <span>{name}</span>
+            <span>
+              <ImageIcon size={12} aria-hidden="true" />
+              {compact ? "화면" : image.label} · 이미지 준비 중
+            </span>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
