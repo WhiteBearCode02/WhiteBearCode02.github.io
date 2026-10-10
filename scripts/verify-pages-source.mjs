@@ -20,6 +20,18 @@ try {
     throw new Error(`Cannot verify GitHub Pages settings (HTTP ${response.status}).`);
   }
   const settings = await response.json();
+  console.log(
+    JSON.stringify({
+      repository,
+      buildType: settings.build_type ?? null,
+      source: settings.source ?? null,
+    }),
+  );
+  if (!settings.build_type) {
+    throw new Error(
+      "GitHub Pages API did not report build_type. Cannot confirm the publishing source.",
+    );
+  }
   if (settings.build_type !== "workflow") {
     throw new Error(
       `Settings > Pages > Build and deployment > Source must be GitHub Actions. ` +
