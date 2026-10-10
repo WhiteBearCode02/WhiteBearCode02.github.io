@@ -4,6 +4,8 @@ export type ProjectTheme = "mint" | "violet" | "blue";
 export interface ProjectImage {
   label: string;
   src?: string;
+  width?: number;
+  height?: number;
   alt: string;
 }
 

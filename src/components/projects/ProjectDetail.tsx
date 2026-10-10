@@ -111,7 +111,11 @@ export function ProjectDetail({ project }: { project: Project }) {
           <section className="detail-section" id="gallery">
             <p className="eyebrow">GALLERY</p>
             <h2>프로젝트 화면과 자료</h2>
-            <p>실제 화면과 자료를 추가할 예정입니다.</p>
+            <p>
+              {project.images.some((image) => image.src)
+                ? "프로젝트의 실제 화면과 자료입니다. 원본 이미지를 열어 자세히 확인할 수 있습니다."
+                : "실제 화면과 자료를 추가할 예정입니다."}
+            </p>
             <div className="gallery-grid">
               {project.images.map((image) => (
                 <figure key={image.label}>
@@ -121,6 +125,18 @@ export function ProjectDetail({ project }: { project: Project }) {
                     name={project.name}
                   />
                   <figcaption>{image.label}</figcaption>
+                  {image.src ? (
+                    <a
+                      href={image.src}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="image-original-link"
+                      aria-label={`${image.label} 원본 이미지 보기`}
+                    >
+                      원본 이미지 보기{" "}
+                      <ArrowUpRight size={14} aria-hidden="true" />
+                    </a>
+                  ) : null}
                 </figure>
               ))}
             </div>
@@ -157,7 +173,9 @@ export function ProjectDetail({ project }: { project: Project }) {
               ) : null}
               {!project.github && !project.demo && !project.document ? (
                 <p className="muted">
-                  연구 자료와 논문 PDF는 추후 공개할 예정입니다.
+                  {project.images.some((image) => image.src)
+                    ? "연구 자료는 위 갤러리에서 확인할 수 있습니다. 논문 PDF는 추후 공개할 예정입니다."
+                    : "연구 자료와 논문 PDF는 추후 공개할 예정입니다."}
                 </p>
               ) : null}
             </div>

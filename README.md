@@ -52,6 +52,18 @@ npm.cmd run preview
 
 ## 콘텐츠와 이미지 수정
 
+이번에 제공한 이미지는 아래 위치에 저장하면 개발 서버 시작·정적 빌드 시 자동으로 연결됩니다. PNG 외에 JPG, JPEG, WebP 확장자도 지원합니다. 파일 내용의 형식과 확장자는 맞춰 주세요.
+
+| 이미지                 | 저장 경로                                       |
+| ---------------------- | ----------------------------------------------- |
+| Al2Beat 스택 학습 화면 | public/images/projects/al2beat/learning.png     |
+| SUMO 학술 발표 포스터  | public/images/projects/sumo-research/poster.png |
+| AIRPTCoach 홈 화면     | public/images/projects/airptcoach/home.png      |
+
+사진 파일이 없는 동안은 기존 그래픽을 유지해 잘못된 이미지 경로를 요청하지 않습니다. 파일을 추가한 뒤 실행 중인 개발 서버를 다시 시작하거나 `npm.cmd run build`를 실행하세요. 각 폴더에 동일한 이름의 이미지가 여러 확장자로 존재하면 PNG, JPG, JPEG, WebP 순서로 한 장을 선택합니다. 이미지 원본은 그대로 사용하며, 상세 갤러리의 원본 보기 링크로 큰 이미지도 열 수 있습니다.
+
+scripts/prepare-project-images.mjs가 로컬 이미지의 경로와 실제 크기를 src/data/project-images.generated.json에 생성합니다. src/lib/project-images.ts의 getProjectImage API는 이 정적 메타데이터만 사용하므로 클라이언트 필터와 GitHub Pages에서도 서버 호출 없이 동작합니다. 새 이미지와 갱신된 JSON은 함께 Git에 추가하세요.
+
 - 프로필: src/data/profile.ts
 - 프로젝트·상세 설명·문제 해결·링크: src/data/projects.ts
 - 기술 및 적용/학습 분류: src/data/skills.ts

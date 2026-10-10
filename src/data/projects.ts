@@ -1,4 +1,5 @@
 import type { Project, ProjectCategory } from "@/types/project";
+import { getProjectImage } from "@/lib/project-images";
 
 export const projectCategories: ("All" | ProjectCategory)[] = [
   "All",
@@ -29,7 +30,10 @@ export const projects: Project[] = [
     ],
     github: "https://github.com/WhiteBearCode02/ArPtApp",
     images: [
-      { label: "메인 화면", alt: "AIRPTCoach 메인 화면" },
+      getProjectImage("airptcoach-home", {
+        label: "메인 화면",
+        alt: "AIRPTCoach 홈 화면의 트레이닝 시작, 운동 기록과 영상 순위 메뉴",
+      }),
       { label: "운동 자세 분석", alt: "AIRPTCoach 운동 자세 분석 화면" },
       { label: "결과 리포트", alt: "AIRPTCoach 운동 결과 리포트" },
       {
@@ -161,7 +165,10 @@ export const projects: Project[] = [
     github: "https://github.com/WhiteBearCode02/Al2Beat",
     demo: "https://al2-beat.vercel.app/",
     images: [
-      { label: "메인 학습 화면", alt: "Al2Beat 메인 학습 화면" },
+      getProjectImage("al2beat-learning", {
+        label: "스택 학습 화면",
+        alt: "Al2Beat 스택 시각화, 괄호 문제와 복습·오답 노트 학습 화면",
+      }),
       { label: "Monaco Editor", alt: "Al2Beat 코드 편집 화면" },
       { label: "알고리즘 시각화", alt: "Al2Beat 알고리즘 시각화 화면" },
       { label: "모바일 화면", alt: "Al2Beat 모바일 화면" },
@@ -248,9 +255,12 @@ export const projects: Project[] = [
     categories: ["Research"],
     technologies: ["SUMO", "교통 시뮬레이션", "데이터 분석"],
     images: [
+      getProjectImage("sumo-poster", {
+        label: "학술 발표 포스터",
+        alt: "SUMO 기반 도시 교통 시뮬레이션을 활용한 신규 도로 개설 효과 분석 시스템 설계 연구 포스터",
+      }),
       { label: "시뮬레이션 화면", alt: "SUMO 교통 시뮬레이션 화면" },
       { label: "연구 구조도", alt: "SUMO 연구 시스템 구조도" },
-      { label: "학술 발표 자료", alt: "SUMO 학술 발표 자료" },
     ],
     sections: [
       {
@@ -287,7 +297,7 @@ export const projects: Project[] = [
         eyebrow: "RESEARCH MATERIALS",
         title: "연구 자료",
         paragraphs: [
-          "시뮬레이션 화면, 연구 구조도, 발표 자료와 논문 PDF를 추후 추가할 예정입니다.",
+          "등록된 연구 화면과 학술 발표 포스터는 아래 갤러리에서 확인할 수 있습니다. 미등록 자료는 준비 중으로 표시하며, 논문 PDF는 추후 추가할 예정입니다.",
         ],
         note: "개별 담당 범위와 정량적 연구 결과는 아직 제공되지 않았습니다.",
       },

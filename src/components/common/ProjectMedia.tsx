@@ -18,20 +18,27 @@ export function ProjectMedia({
   const Icon = icons[theme];
   return (
     <div
-      className={`project-media theme-${theme} ${compact ? "media-compact" : ""}`}
+      className={`project-media theme-${theme} ${compact ? "media-compact" : ""} ${image.src ? `media-real ${compact ? "" : "media-expanded"}` : ""}`}
     >
       {image.src ? (
-        <Image
-          src={image.src}
-          alt={image.alt}
-          fill
-          sizes={
-            compact
-              ? "(max-width: 700px) 100vw, 40vw"
-              : "(max-width: 700px) 100vw, 50vw"
-          }
-          className="project-image"
-        />
+        compact ? (
+          <Image
+            src={image.src}
+            alt={image.alt}
+            fill
+            sizes="(max-width: 700px) 100vw, 50vw"
+            className="project-image"
+          />
+        ) : (
+          <Image
+            src={image.src}
+            alt={image.alt}
+            width={image.width ?? 1600}
+            height={image.height ?? 900}
+            sizes="(max-width: 700px) 100vw, 80vw"
+            className="project-image"
+          />
+        )
       ) : (
         <>
           <div className="media-grid" aria-hidden="true" />

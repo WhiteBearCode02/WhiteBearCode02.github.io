@@ -378,6 +378,39 @@ svg {
 .project-image {
   object-fit: contain;
 }
+.project-media.media-real {
+  background: #0b1423;
+}
+.project-media.theme-blue.media-real {
+  background: #e9edf3;
+}
+.media-real.media-compact .project-image {
+  padding: 16px;
+}
+.project-detail > .project-media.media-expanded,
+.gallery-grid .project-media.media-expanded {
+  height: auto;
+  padding: 16px;
+}
+.media-expanded .project-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 760px;
+}
+.gallery-grid .media-expanded .project-image {
+  max-height: 580px;
+}
+.image-original-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
 .project-card-body {
   padding: 20px 0 0;
 }

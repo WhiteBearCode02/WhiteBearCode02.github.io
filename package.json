@@ -3,10 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "prepare:images": "node scripts/prepare-project-images.mjs",
+    "predev": "node scripts/prepare-project-images.mjs",
     "dev": "next dev",
+    "prebuild": "node scripts/prepare-project-images.mjs",
     "build": "next build",
     "postbuild": "node scripts/prepare-static-export.mjs && node scripts/verify-static-export.mjs",
     "lint": "eslint .",
+    "pretypecheck": "node scripts/prepare-project-images.mjs",
     "typecheck": "tsc --noEmit",
     "verify:project": "node scripts/verify-project.mjs",
     "preview": "node scripts/serve-static.mjs"
