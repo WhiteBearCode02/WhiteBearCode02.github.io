@@ -12,13 +12,15 @@ export const metadata = pageMetadata(
 export default function ProjectsPage() {
   return (
     <>
-      <section className="container page-section">
-        <PageHeading
-          eyebrow="PROJECTS / SELECTED WORK"
-          title="Projects"
-          description="문제를 정의하고, 기술을 선택하고, 구현으로 연결한 경험입니다."
-        />
-        <ProjectGrid />
+      <section className="theme-light">
+        <div className="container page-section">
+          <PageHeading
+            eyebrow="PROJECTS / SELECTED WORK"
+            title="Projects"
+            description="문제를 정의하고, 기술을 선택하고, 구현으로 연결한 경험입니다."
+          />
+          <ProjectGrid />
+        </div>
       </section>
       <ContactCTA />
     </>

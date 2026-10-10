@@ -35,9 +35,16 @@ export function ProjectMedia({
       ) : (
         <>
           <div className="media-grid" aria-hidden="true" />
+          <div className="media-composition" aria-hidden="true">
+            <span />
+            <span />
+          </div>
           <div className="media-symbol" aria-hidden="true">
             <Icon strokeWidth={1.3} />
           </div>
+          <span className="media-wordmark" lang="en" aria-hidden="true">
+            {name}
+          </span>
           <div className="media-label">
             <span>{name}</span>
             <span>

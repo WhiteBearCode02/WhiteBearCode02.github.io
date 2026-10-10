@@ -21,21 +21,24 @@ import { certifications } from "@/data/certifications";
 
 export function FeaturedProjects() {
   return (
-    <section className="section container" id="featured">
-      <SectionHeading
-        eyebrow="01 / SELECTED WORK"
-        title="경험을 담은 프로젝트"
-        description="모바일, 웹, 연구. 서로 다른 문제를 기술로 풀어낸 기록입니다."
-        action={
-          <Link className="text-link" href="/projects/">
-            전체 프로젝트 <ArrowUpRight size={16} aria-hidden="true" />
-          </Link>
-        }
-      />
-      <div className="project-grid">
-        {projects.map((project, index) => (
-          <ProjectCard key={project.slug} project={project} index={index} />
-        ))}
+    <section className="section theme-light" id="featured">
+      <div className="container">
+        <SectionHeading
+          eyebrow="01 / SELECTED WORK"
+          displayTitle="Selected work"
+          title="경험을 담은 프로젝트"
+          description="모바일, 웹, 연구. 서로 다른 문제를 기술로 풀어낸 기록입니다."
+          action={
+            <Link className="text-link" href="/projects/">
+              전체 프로젝트 <ArrowUpRight size={16} aria-hidden="true" />
+            </Link>
+          }
+        />
+        <div className="project-grid">
+          {projects.map((project, index) => (
+            <ProjectCard key={project.slug} project={project} index={index} />
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -47,6 +50,11 @@ export function AboutPreview() {
       <div className="container about-preview">
         <div>
           <p className="eyebrow">02 / ABOUT ME</p>
+          <p className="about-display" lang="en" aria-hidden="true">
+            Behind
+            <br />
+            the code.
+          </p>
           <h2>
             선택의 이유를 설명하고,
             <br />
@@ -88,6 +96,7 @@ export function SkillsSection() {
     <section className="section container">
       <SectionHeading
         eyebrow="03 / TOOLKIT"
+        displayTitle="The toolkit"
         title="문제 해결에 사용하는 도구들"
         description="프로젝트에 적용한 기술과 학습·실습한 기술을 구분했습니다."
       />
@@ -143,41 +152,47 @@ export function SkillsSection() {
 
 export function ExperiencePreview() {
   return (
-    <section className="section container">
-      <SectionHeading
-        eyebrow="04 / EXPERIENCE"
-        title="배우고, 탐구하며 넓혀온 경험"
-        action={
-          <Link href="/experience/" className="text-link">
-            활동 자세히 보기 <ArrowUpRight size={16} aria-hidden="true" />
-          </Link>
-        }
-      />
-      <Timeline />
+    <section className="section theme-light">
+      <div className="container">
+        <SectionHeading
+          eyebrow="04 / EXPERIENCE"
+          displayTitle="Experience"
+          title="배우고, 탐구하며 넓혀온 경험"
+          action={
+            <Link href="/experience/" className="text-link">
+              활동 자세히 보기 <ArrowUpRight size={16} aria-hidden="true" />
+            </Link>
+          }
+        />
+        <Timeline />
+      </div>
     </section>
   );
 }
 
 export function CertificationsSection() {
   return (
-    <section className="section container">
-      <SectionHeading
-        eyebrow="05 / CERTIFICATIONS"
-        title="학습을 이어가는 기록"
-      />
-      <div className="certification-grid">
-        {certifications.map((certification) => (
-          <article className="certification-card" key={certification.name}>
-            <Award size={21} aria-hidden="true" />
-            <span
-              className={`status-badge ${certification.obtained ? "status-obtained" : ""}`}
-            >
-              {certification.status}
-            </span>
-            <h3>{certification.name}</h3>
-            <p>{certification.organization}</p>
-          </article>
-        ))}
+    <section className="section theme-light certifications-section">
+      <div className="container">
+        <SectionHeading
+          eyebrow="05 / CERTIFICATIONS"
+          displayTitle="Keep learning"
+          title="학습을 이어가는 기록"
+        />
+        <div className="certification-grid">
+          {certifications.map((certification) => (
+            <article className="certification-card" key={certification.name}>
+              <Award size={21} aria-hidden="true" />
+              <span
+                className={`status-badge ${certification.obtained ? "status-obtained" : ""}`}
+              >
+                {certification.status}
+              </span>
+              <h3>{certification.name}</h3>
+              <p>{certification.organization}</p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -185,24 +200,29 @@ export function CertificationsSection() {
 
 export function ContactCTA() {
   return (
-    <section className="section container">
-      <div className="contact-cta">
-        <div>
-          <p className="eyebrow">LET’S BUILD SOMETHING</p>
-          <h2>
-            함께 문제를 해결하고
-            <br />
-            성장할 기회를 기다립니다<span className="accent">.</span>
-          </h2>
-          <p>프로젝트와 개발 경험에 대해 편하게 연락해주세요.</p>
+    <section className="section contact-section">
+      <div className="container">
+        <div className="contact-cta">
+          <div>
+            <p className="eyebrow">LET’S BUILD SOMETHING</p>
+            <p className="contact-display" lang="en" aria-hidden="true">
+              Let’s talk.
+            </p>
+            <h2>
+              함께 문제를 해결하고
+              <br />
+              성장할 기회를 기다립니다<span className="accent">.</span>
+            </h2>
+            <p>프로젝트와 개발 경험에 대해 편하게 연락해주세요.</p>
+          </div>
+          <Link href="/contact/" className="button button-primary">
+            <Mail size={18} aria-hidden="true" />
+            연락하기 <ArrowUpRight size={17} aria-hidden="true" />
+          </Link>
+          <span className="cta-decoration" aria-hidden="true">
+            ↗
+          </span>
         </div>
-        <Link href="/contact/" className="button button-primary">
-          <Mail size={18} aria-hidden="true" />
-          연락하기 <ArrowUpRight size={17} aria-hidden="true" />
-        </Link>
-        <span className="cta-decoration" aria-hidden="true">
-          ↗
-        </span>
       </div>
     </section>
   );

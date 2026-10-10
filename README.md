@@ -1,6 +1,6 @@
 # Hyunjoon Lee — Developer Portfolio
 
-이현준의 Android·AI/머신러닝·풀스택 개발 경험을 소개하는 한국어 포트폴리오입니다. 처음 제공된 요구사항의 경력, 자격 상태, 프로젝트 설명만 반영했습니다. 디자인은 추후 교체할 수 있는 기본 다크 네이비 테마입니다.
+이현준의 Android·AI/머신러닝·풀스택 개발 경험을 소개하는 한국어 포트폴리오입니다. 처음 제공된 요구사항의 경력, 자격 상태, 프로젝트 설명만 반영했습니다. [Daniel.G 템플릿](https://www.framer.com/marketplace/templates/daniel-g/)의 큰 타이포그래피, 흑백 대비와 여백을 참고해 개발자 포트폴리오에 맞게 구성했습니다.
 
 ## 기술과 페이지
 
@@ -25,6 +25,7 @@ src/
 public/
   images/projects/       실제 프로젝트 이미지 추가 위치
   resume/                resume.pdf 추가 위치
+  fonts/                 로컬 제목 폰트와 배포 라이선스
 scripts/                 프로젝트·정적 파일 검사와 로컬 미리보기
 .github/workflows/       GitHub Pages 자동 배포
 ```
@@ -69,7 +70,9 @@ SUMO 논문 PDF를 공개할 준비가 되면 public에 파일을 넣고 project
 
 ## 디자인 변경
 
-src/app/globals.css의 :root에서 컬러, 폰트, 컨테이너 크기, 반경, 섹션 간격을 관리합니다. Hero 구성은 src/components/home/Hero.tsx, 카드와 상세 구성은 src/components/projects/, 메뉴는 src/components/layout/에서 변경합니다. 콘텐츠 데이터는 그대로 유지하면서 디자인을 교체할 수 있습니다. 시스템 폰트를 사용해 외부 폰트 다운로드에 의존하지 않습니다.
+src/app/globals.css의 :root에서 컬러, 본문 폰트, 컨테이너 크기, 반경, 섹션 간격을 관리합니다. 밝은 섹션은 theme-light의 토큰을 사용합니다. 홈의 큰 제목과 그래픽 배치는 src/styles/home.css에서 관리합니다. Hero 구성은 src/components/home/Hero.tsx, 직접 제작한 벡터 그래픽은 DeveloperVisual.tsx, 카드와 상세 구성은 src/components/projects/, 메뉴는 src/components/layout/에서 변경합니다. 콘텐츠 데이터는 디자인과 별도로 유지합니다.
+
+영문 제목은 Google Fonts 공식 저장소에서 제공하는 Bebas Neue를 next/font/local로 로드하며, 본문은 시스템 폰트를 사용합니다. 외부 폰트 서버나 Framer 서비스에 연결하지 않습니다. 폰트의 SIL Open Font License와 저작권 표기는 public/fonts/OFL-BebasNeue.txt에 포함되어 있습니다. 참고 템플릿의 코드, 사진, 프로젝트 이미지는 가져오지 않았으며 그래픽은 직접 구성했습니다.
 
 ## GitHub Pages 배포
 

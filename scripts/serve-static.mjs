@@ -18,6 +18,7 @@ const contentTypes = {
   ".pdf": "application/pdf",
   ".xml": "application/xml",
   ".woff2": "font/woff2",
+  ".ttf": "font/ttf",
 };
 
 createServer(async (request, response) => {

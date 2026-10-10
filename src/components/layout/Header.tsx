@@ -11,17 +11,20 @@ export function Header() {
     <header className="site-header">
       <div className="container header-inner">
         <Link href="/" className="brand" aria-label="이현준 홈">
-          <span className="brand-mark">
-            h<span>.</span>
-          </span>
-          <span>
-            HYUNJOON LEE<small>Developer Portfolio</small>
+          <span className="brand-wordmark">
+            Hyunjoon<span className="accent">.</span>
           </span>
         </Link>
         <nav className="desktop-navigation" aria-label="주 메뉴">
           <Navigation />
         </nav>
         <div className="header-actions">
+          <Link
+            href="/contact/"
+            className="button button-primary header-contact"
+          >
+            Contact <ArrowUpRight size={15} aria-hidden="true" />
+          </Link>
           <ExternalLink href={profile.github} className="github-header">
             GitHub <ArrowUpRight size={15} aria-hidden="true" />
           </ExternalLink>

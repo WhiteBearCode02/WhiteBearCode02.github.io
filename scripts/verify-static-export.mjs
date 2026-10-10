@@ -17,6 +17,8 @@ const requiredFiles = [
   "robots.txt",
   "icon.svg",
   ".nojekyll",
+  "fonts/BebasNeue-Regular.ttf",
+  "fonts/OFL-BebasNeue.txt",
 ];
 
 export async function verifyStaticExport(root = exportRoot) {

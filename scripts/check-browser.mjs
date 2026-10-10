@@ -26,7 +26,7 @@ const routes = [
 ];
 const layouts = [];
 try {
-  for (const width of [375, 390, 768, 1440]) {
+  for (const width of [320, 375, 390, 768, 1024, 1440]) {
     await page.setViewportSize({ width, height: 900 });
     for (const route of routes) {
       const response = await page.goto(`http://127.0.0.1:4173${route}`);
@@ -80,6 +80,19 @@ try {
     assert.equal((await page.reload()).status(), 200);
   }
   await page.goto("http://127.0.0.1:4173/");
+  await page.evaluate(() => document.fonts.ready);
+  assert.ok(
+    await page.evaluate(() => {
+      const family = getComputedStyle(document.querySelector("h1"))
+        .fontFamily.split(",")[0]
+        .trim()
+        .replaceAll('"', "");
+      return Array.from(document.fonts).some(
+        (font) => font.family === family && font.status === "loaded",
+      );
+    }),
+    "The self-hosted display font must load",
+  );
   await page.screenshot({ path: ".preview/desktop-top.png" });
   await page.screenshot({ path: ".preview/desktop-home.png", fullPage: true });
   await page.setViewportSize({ width: 390, height: 844 });
