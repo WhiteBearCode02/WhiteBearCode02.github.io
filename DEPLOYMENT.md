@@ -8,6 +8,10 @@
 
 성공으로 표시되었던 `pages build and deployment`는 Jekyll 작업이었습니다. Next.js 정적 빌드 결과를 배포하려면 **Settings → Pages → Build and deployment → Source → GitHub Actions**를 선택하세요. 기존 커밋의 실패 표시를 지우려고 재실행할 필요는 없습니다. 새 커밋의 실행 결과를 확인하세요.
 
+2026-10-11 확인한 최근 실행에서는 Next.js 배포 후 기존 Jekyll 배포가 완료되어 포트폴리오를 README 페이지로 덮어썼습니다. 이는 CSS가 삭제된 문제가 아니라 게시 소스가 두 개였기 때문입니다. 워크플로에 게시 방식 검사를 추가하여 Source가 GitHub Actions가 아니면 명확한 오류로 중단합니다. 이 검사는 기존 `pages: read` 권한만 사용하며 저장소 설정을 임의로 변경하지 않습니다. Source 변경 후 새 커밋을 push하거나 실패한 워크플로에서 **Re-run all jobs**를 실행하세요.
+
+프로젝트 루트에 제공된 세 사진은 원본을 보존하고 `public/images/projects/airptcoach/home.jpeg`, `al2beat/learning.png`, `sumo-research/poster.png`에 복사했습니다. 빌드 시 이미지 메타데이터가 생성되며 목록과 상세 페이지에서 동일한 자료를 사용합니다. 배포에는 public 폴더의 복사본만 필요합니다.
+
 ## 정적 배포 구조
 
 - `output: "export"`로 `out/`에 HTML, CSS, JavaScript를 생성합니다.

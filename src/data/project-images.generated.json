@@ -1,1 +1,17 @@
-{}
+{
+  "airptcoach-home": {
+    "src": "/images/projects/airptcoach/home.jpeg",
+    "width": 716,
+    "height": 1536
+  },
+  "al2beat-learning": {
+    "src": "/images/projects/al2beat/learning.png",
+    "width": 1919,
+    "height": 905
+  },
+  "sumo-poster": {
+    "src": "/images/projects/sumo-research/poster.png",
+    "width": 1122,
+    "height": 1402
+  }
+}
