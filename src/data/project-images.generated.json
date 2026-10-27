@@ -1,8 +1,28 @@
 {
   "airptcoach-home": {
-    "src": "/images/projects/airptcoach/home.jpeg",
-    "width": 716,
-    "height": 1536
+    "src": "/images/projects/airptcoach/home.webp",
+    "width": 1080,
+    "height": 2316
+  },
+  "airptcoach-analysis": {
+    "src": "/images/projects/airptcoach/pose-analysis.webp",
+    "width": 412,
+    "height": 858
+  },
+  "airptcoach-result": {
+    "src": "/images/projects/airptcoach/exercise-result.webp",
+    "width": 1080,
+    "height": 2316
+  },
+  "airptcoach-history": {
+    "src": "/images/projects/airptcoach/exercise-history.webp",
+    "width": 1080,
+    "height": 2316
+  },
+  "airptcoach-statistics": {
+    "src": "/images/projects/airptcoach/exercise-statistics.webp",
+    "width": 1080,
+    "height": 2316
   },
   "al2beat-learning": {
     "src": "/images/projects/al2beat/learning.png",

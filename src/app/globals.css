@@ -895,6 +895,21 @@ svg {
 .gallery-grid figure {
   margin: 0;
 }
+.gallery-image-link {
+  display: block;
+  border-radius: var(--radius);
+  cursor: zoom-in;
+}
+.gallery-phone .media-expanded .project-image {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 680px;
+  margin-inline: auto;
+}
+.gallery-phone {
+  align-items: start;
+}
 .gallery-grid .project-media {
   height: 200px;
 }

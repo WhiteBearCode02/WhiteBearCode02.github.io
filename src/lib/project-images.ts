@@ -1,7 +1,14 @@
 import generatedImages from "@/data/project-images.generated.json";
 import type { ProjectImage } from "@/types/project";
 
-type ProjectImageId = "airptcoach-home" | "al2beat-learning" | "sumo-poster";
+type ProjectImageId =
+  | "airptcoach-home"
+  | "airptcoach-analysis"
+  | "airptcoach-result"
+  | "airptcoach-history"
+  | "airptcoach-statistics"
+  | "al2beat-learning"
+  | "sumo-poster";
 const images: Partial<
   Record<ProjectImageId, Pick<ProjectImage, "src" | "width" | "height">>
 > = generatedImages;

@@ -4,6 +4,10 @@ import { fileURLToPath } from "node:url";
 const projectRoot = new URL("../", import.meta.url);
 const entries = [
   { id: "airptcoach-home", folder: "airptcoach", name: "home" },
+  { id: "airptcoach-analysis", folder: "airptcoach", name: "pose-analysis" },
+  { id: "airptcoach-result", folder: "airptcoach", name: "exercise-result" },
+  { id: "airptcoach-history", folder: "airptcoach", name: "exercise-history" },
+  { id: "airptcoach-statistics", folder: "airptcoach", name: "exercise-statistics" },
   { id: "al2beat-learning", folder: "al2beat", name: "learning" },
   { id: "sumo-poster", folder: "sumo-research", name: "poster" },
 ];
@@ -79,7 +83,10 @@ function dimensions(buffer) {
 
 const images = {};
 for (const entry of entries) {
-  for (const extension of extensions) {
+  const preferredExtensions = entry.folder === "airptcoach"
+    ? ["webp", "png", "jpg", "jpeg"]
+    : extensions;
+  for (const extension of preferredExtensions) {
     const src = `/images/projects/${entry.folder}/${entry.name}.${extension}`;
     const file = new URL(`public${src}`, projectRoot);
     try {
@@ -109,7 +116,7 @@ const content = JSON.stringify(images, null, 2) + "\n";
 if ((await readFile(destination, "utf8").catch(() => "")) !== content)
   await writeFile(destination, content);
 console.log(
-  `Prepared ${Object.keys(images).length}/3 project images. Missing images keep their placeholders.`,
+  `Prepared ${Object.keys(images).length}/${entries.length} project images. Missing images keep their placeholders.`,
 );
 console.log(
   `Image folder: ${fileURLToPath(new URL("public/images/projects/", projectRoot))}`,

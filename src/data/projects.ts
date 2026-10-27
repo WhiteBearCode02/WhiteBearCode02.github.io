@@ -22,7 +22,7 @@ export const projects: Project[] = [
       "Android",
       "CameraX",
       "MediaPipe Pose",
-      "YOLO",
+      "YOLO Shadow (Debug)",
       "TensorFlow Lite",
       "Room",
       "Supabase",
@@ -32,14 +32,24 @@ export const projects: Project[] = [
     images: [
       getProjectImage("airptcoach-home", {
         label: "메인 화면",
-        alt: "AIRPTCoach 홈 화면의 트레이닝 시작, 운동 기록과 영상 순위 메뉴",
+        alt: "실제 Android 기기에서 캡처한 AIRPTCoach 최신 홈 화면. 트레이닝 시작, 운동 기록, 영상 순위와 주변 헬스장 메뉴",
       }),
-      { label: "운동 자세 분석", alt: "AIRPTCoach 운동 자세 분석 화면" },
-      { label: "결과 리포트", alt: "AIRPTCoach 운동 결과 리포트" },
-      {
-        label: "카메라 오류 수정 전후",
-        alt: "카메라 좌표 오류 개선 전후 비교",
-      },
+      ...[getProjectImage("airptcoach-analysis", {
+        label: "실시간 자세 분석 — 스쿼트 감지·관절 오버레이·자세 피드백",
+        alt: "사용자 제공 AIRPTCoach 실행 화면. 측면 스쿼트 동작에 관절 스켈레톤이 표시되고 스쿼트 세션과 감지 상태, 운동 횟수 0회, 몸통 기울기 피드백이 보임. 얼굴은 비공개 처리",
+      })].filter((image) => image.src),
+      getProjectImage("airptcoach-result", {
+        label: "운동 결과 — 횟수·분석 점수·피드백과 회차별 점수 흐름",
+        alt: "스쿼트 운동 결과의 반복 횟수, 세션 평균, 운동 시간, 예상 칼로리와 자세 피드백. AI 설명은 준비 중으로 표시",
+      }),
+      getProjectImage("airptcoach-history", {
+        label: "운동 기록 — 스쿼트·숄더프레스 내역과 상세 리포트 연결",
+        alt: "기기에 저장된 스쿼트와 숄더프레스 운동 기록 및 YOLO Shadow 기록 여부. 운동 날짜는 비공개 처리",
+      }),
+      getProjectImage("airptcoach-statistics", {
+        label: "주간·월간 운동 분석 — 최근 7일 기록이 없는 실제 상태",
+        alt: "최근 7일과 30일 전환이 가능한 운동 통계 화면. 캡처 당시 최근 7일 기록 없음",
+      }),
     ],
     sections: [
       {
@@ -64,13 +74,15 @@ export const projects: Project[] = [
         eyebrow: "FEATURES",
         title: "카메라에서 운동 기록까지",
         items: [
-          "MediaPipe 기반 관절 추적 및 스켈레톤 오버레이",
-          "운동 반복 횟수 계산",
-          "스쿼트 및 숄더프레스 자세 분석",
-          "운동 기록·통계 및 결과 리포트",
-          "사용자 인증과 로컬·원격 데이터 관리",
-          "운동 종류 인식 AI 모델 개발 및 학습 실험",
+          "CameraX 영상과 MediaPipe Pose 관절 추적·스켈레톤 오버레이",
+          "관절 기반 운동 감지와 세션 운동 종류 고정 — 스쿼트·숄더프레스 지원",
+          "관절 각도 기반 반복 횟수·자세 분석, 개인 기준 동작 기록 및 비교",
+          "회차별 점수·관찰 내용과 세션 요약을 제공하는 결과 리포트",
+          "Room 기반 계정별 운동 기록과 최근 7일·30일 통계",
+          "사용자 인증·프로필 관리 및 운동 결과 원격 저장 코드",
+          "디버그 환경의 YOLO Shadow 병렬 진단 — 실제 운동 판정과 분리",
         ],
+        note: "운동 종류를 별도 목록에서 선택하는 대신 움직임을 자동 감지합니다. 현재 운동 세션은 스쿼트·숄더프레스를 지원합니다. AI 결과 설명은 준비 중입니다.",
       },
       {
         id: "architecture",
@@ -79,20 +91,22 @@ export const projects: Project[] = [
         items: [
           "카메라 영상 처리 — CameraX",
           "관절 추정 및 표시 — MediaPipe Pose",
+          "운동 판정 — 관절 기반 감지·각도 분석·세션 상태 관리",
+          "모델 비교 진단 — TensorFlow Lite 기반 YOLO Shadow (디버그 전용)",
           "모바일 애플리케이션 — Kotlin · Android",
           "로컬 및 원격 데이터 관리 — Room · Supabase",
         ],
-        note: "제공된 기술과 기능의 관계를 정리한 개념 구조입니다. 상세 내부 아키텍처와 모델별 앱 탑재 여부는 별도 확인이 필요합니다.",
+        note: "2026-10-27 원격 소스 915a90d 기준으로 확인했습니다. 홈페이지는 정적 콘텐츠만 제공하며 앱의 인증·DB·외부 서비스에 연결하지 않습니다.",
       },
       {
         id: "ai-training",
         eyebrow: "AI TRAINING",
-        title: "실제 운동 환경을 고려한 모델 학습",
+        title: "모델 학습·추론 실험과 실제 운동 판정을 구분하다",
         paragraphs: [
-          "AI-Hub 등의 공개 데이터와 실제 운동 영상을 활용하여 운동 인식 모델 학습을 실험했습니다.",
-          "공개 데이터와 실제 촬영 영상의 특성을 고려하여 학습 데이터 활용 가능성을 검토했습니다.",
+          "실제 운동 판정은 MediaPipe 관절 정보를 사용하는 감지·분석 경로가 담당합니다. YOLO 결과가 운동 횟수나 자세 판정을 대신하지 않도록 분리했습니다.",
+          "YOLO는 디버그 빌드의 Shadow 경로에서 별도 TensorFlow Lite 모델을 검증하고 병렬 추론·안정화·진단 정보를 수집하는 구조입니다. 모델 누락이나 초기화 실패가 MediaPipe 경로를 중단하지 않도록 구성했습니다.",
         ],
-        note: "모델 학습 실험과 실제 앱 탑재를 구분합니다. 정확도, mAP, F1 Score, FPS 등 검증된 성능 수치는 아직 제공되지 않았습니다.",
+        note: "현재 빌드 설정은 APK에서 개별 모델 가중치를 제외하며, 디버그 YOLO는 별도 모델과 실행 조건이 필요합니다. 소스에 추론 코드가 있다는 사실만으로 설치 앱의 모델 실행 성공을 주장하지 않습니다. 정확도·FPS 등 성능 수치는 기재하지 않습니다.",
       },
       {
         id: "results",

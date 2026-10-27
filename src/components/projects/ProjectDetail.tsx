@@ -116,14 +116,17 @@ export function ProjectDetail({ project }: { project: Project }) {
                 ? "프로젝트의 실제 화면과 자료입니다. 원본 이미지를 열어 자세히 확인할 수 있습니다."
                 : "실제 화면과 자료를 추가할 예정입니다."}
             </p>
-            <div className="gallery-grid">
+            <div className={`gallery-grid${project.slug === "airptcoach" ? " gallery-phone" : ""}`}>
               {project.images.map((image) => (
                 <figure key={image.label}>
-                  <ProjectMedia
-                    image={image}
-                    theme={project.theme}
-                    name={project.name}
-                  />
+                  {project.slug === "airptcoach" && image.src ? (
+                    <a href={image.src} target="_blank" rel="noopener noreferrer"
+                      className="gallery-image-link" aria-label={`${image.label} 확대 보기 (새 탭)`}>
+                      <ProjectMedia image={image} theme={project.theme} name={project.name} />
+                    </a>
+                  ) : (
+                    <ProjectMedia image={image} theme={project.theme} name={project.name} />
+                  )}
                   <figcaption>{image.label}</figcaption>
                   {image.src ? (
                     <a
